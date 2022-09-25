@@ -9,3 +9,4 @@ edition = "2021"
 rocket = { version = "0.5.0-rc.2", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 tokio = { version = "1.21", features = ["full"] }
+rs-consul = "0.2.3"
