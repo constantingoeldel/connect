@@ -1,0 +1,26 @@
+version: "3.4"
+
+services:
+  core:
+    build: ./core
+  consul:
+    container_name: consul
+    image: consul
+    command: >-
+      consul
+      agent
+      -dev
+      -log-level=debug
+      -recursor=8.8.8.8
+      -client=0.0.0.0
+      -enable-local-script-checks
+      -config-file=/consul/config/config.hcl
+      -datacenter=dc1
+    ports:
+      - 8500:8500
+    restart: always
+    volumes:
+      - "./consul:/consul/config"
+  web:
+    build: ./web
+networks:
